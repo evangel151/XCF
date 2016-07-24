@@ -1,0 +1,84 @@
+//
+//  PrefixHeader.pch
+//  LJKitchen
+//
+//  Created by  a on 16/6/8.
+//  Copyright © 2016年 ycdsq. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+// Libs - 通用
+#import <YYCategories.h>
+#import <SVProgressHUD.h>
+
+// Extension - 扩展
+#import "UIButton+Extension.h"
+#import "UILabel+Extension.h"
+#import "UIViewController+Extension.h"
+#import "UIView+Extension.h"
+#import "UIImageView+Extension.h"
+#import "NSString+Extension.h"
+#import "NSDate+Extension.h"
+#import "UIToolbar+Extension.h"
+#import "UIBarButtonItem+Extension.h"
+
+
+// 项目公用常量 & 枚举
+#import "LJKConst.h"
+// 抓包的请求(固定url)
+#import "LJKConstRequest.h"
+// 公用String (通知 + 特定字符串)
+#import "LJKConstString.h"
+
+// 通用常量 
+#define SCREEN_SIZE    [[UIScreen mainScreen] bounds].size
+#define SCREEN_WIDTH   [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT  [[UIScreen mainScreen] bounds].size.height
+
+#define TABBAR_HEIGHT  44
+#define NAVBAR_HEIGHT  64
+#define TABLEVIEW_TITLE_HEIGHT 40
+#define TABLEVIEWCELL_NORMAL_HEIGHT 44
+// Marco - 宏
+/** 指定RGB & alpha 颜色 */
+#define LJregular(r,g,b,a) [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:(a)]
+/** MessageView 按钮文字颜色 (与图片搭配) */
+#define Color_DarkGray    LJregular(112, 112, 112, 1)
+/** 默认的背景颜色 */
+#define Color_BackGround  LJregular(230, 230, 230, 1)
+/** 项目主题颜色(橘红色) */
+#define Color_ThemeColor  LJregular(234, 79, 57, 1)
+/** 项目主体颜色 & alpha (橘红色 + 半透明) */
+#define Color_ThemeColor_Alpha  LJregular(234, 79, 57, 0.9)
+/** 项目半透明黑色背景 & Alpha (时间指示器) */
+#define Color_Black_Alpha LJregular(0, 0,0 ,0.5)
+/** 项目主体颜色 (鹅黄色) */
+#define Color_ThemeColor_Yellow LJregular(251, 246, 213, 1)
+/** 白色字体 (更改为纯白色……) */
+#define Color_TintWhite   [UIColor whiteColor]
+#define Color_TintBlack   [UIColor blackColor]
+/** 透明背景 */
+#define Color_Clear [UIColor clearColor]
+///** 半透明黑色背景 */
+//#define Color_Black_Alpha LJregular(0, 0, 0, 0.5)
+/** 半透明(黑色)遮罩 */
+#define Color_Cover_Alpha LJregular(0, 0, 0, 0.2)
+
+/** (fake)评论地址 */
+#define LJKCommentPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"comment.data"]
+
+/** (fake)商品信息 */
+#define LJKCartItemsPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"cartItems.data"]
+
+
+
+/** 通知中心 */
+#define NotificationCenter [NSNotificationCenter defaultCenter]
+
+/** WeakSelf 防block循环引用 */
+#define WeakSelf __weak typeof(self) weakSelf = self;
+
+#endif /* PrefixHeader_pch */
