@@ -54,6 +54,7 @@
         
         [_separtorLine mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 1));
+            make.top.equalTo(self.spreadImage.mas_bottom);
             make.centerX.equalTo(self.contentView.mas_centerX);
             make.bottom.equalTo(self.contentView.mas_bottom);
         }];

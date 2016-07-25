@@ -85,9 +85,11 @@ static NSString * const newArrivalCellIdentifier    = @"newArrivalCell";    // �
 
 - (void)setupTableview {
     
-    self.tableView.bounces = NO;
+//    self.tableView.bounces = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 100.0f;
+    self.tableView.backgroundColor = Color_BackGround;
     // 市集分类
     [self.tableView registerClass:[LJKMarketCategoryCell class]
            forCellReuseIdentifier:categoryCellIdentifier];
@@ -104,6 +106,11 @@ static NSString * const newArrivalCellIdentifier    = @"newArrivalCell";    // �
     [self.tableView registerClass:[LJKMarketNewArrivalCell class]
            forCellReuseIdentifier:newArrivalCellIdentifier];
     
+    CGRect topFrame = self.tableView.bounds;
+    topFrame.origin.y = -topFrame.size.height;
+    UIView* topView = [[UIView alloc] initWithFrame:topFrame];
+    topView.backgroundColor = [UIColor whiteColor];
+    [self.tableView addSubview:topView];
 }
 
 
@@ -242,23 +249,23 @@ static NSString * const newArrivalCellIdentifier    = @"newArrivalCell";    // �
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 180;
-    } else if (indexPath.section == 1) {
-        return SCREEN_WIDTH  * 0.6;
-    } else if (indexPath.section == 2) {
-        // sum = item高度 + 标题高度 + 间距
-        CGFloat sumH = ((SCREEN_WIDTH - 4 * 20) / 3) + 60 + 30 + 10;
-        return sumH;
-    } else if (indexPath.section == 3) {
-        CGFloat sumH = ((SCREEN_WIDTH - 4 * 20) / 3) + 30 + 10;
-        return sumH;
-    } else if (indexPath.section == 4) {
-        return 1500;
-    }
-    return 0;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (indexPath.section == 0) {
+//        return 180;
+//    } else if (indexPath.section == 1) {
+//        return SCREEN_WIDTH  * 0.6;
+//    } else if (indexPath.section == 2) {
+//        // sum = item高度 + 标题高度 + 间距
+//        CGFloat sumH = ((SCREEN_WIDTH - 4 * 20) / 3) + 60 + 30 + 10;
+//        return sumH;
+//    } else if (indexPath.section == 3) {
+//        CGFloat sumH = ((SCREEN_WIDTH - 4 * 20) / 3) + 30 + 10;
+//        return sumH;
+//    } else if (indexPath.section == 4) {
+//        return 1500;
+//    }
+//    return 0;
+//}
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

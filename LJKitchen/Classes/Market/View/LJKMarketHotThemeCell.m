@@ -74,6 +74,7 @@ static NSString *const hotThemeIdentifier = @"hotThemeCell";
             make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH - 20 * 4) / 3 + 10));
             make.top.equalTo(self.hotThemeTitle.mas_bottom);
             make.left.equalTo(self.contentView.mas_left);
+            make.bottom.equalTo(self.contentView.mas_bottom);
         }];
         
     }

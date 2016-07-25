@@ -46,12 +46,14 @@ static NSString *const newArrivalIdentifier = @"newArrivalCell";
         flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
         flowLayout.itemSize = CGSizeMake(itemWH, itemWH + 87);
         flowLayout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20);
+        flowLayout.minimumLineSpacing = 20.0f;
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
                                              collectionViewLayout:flowLayout];
         _collectionView.backgroundColor = Color_Clear;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.bounces = NO;
+        _collectionView.scrollEnabled = NO;
         [_collectionView registerClass:[LJKMarketArrivalItem class] forCellWithReuseIdentifier:newArrivalIdentifier];
         [self.contentView addSubview:_collectionView];
         [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -75,6 +77,16 @@ static NSString *const newArrivalIdentifier = @"newArrivalCell";
     cell.layer.cornerRadius = 5;
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.mas_left);
+        make.right.equalTo(self.contentView.mas_right);
+        make.top.equalTo(self.titleLabel.mas_bottom);
+        make.bottom.equalTo(self.contentView.mas_bottom);
+        make.height.equalTo(@([collectionView.collectionViewLayout collectionViewContentSize].height + 20.0f));
+    }];
 }
 
 #pragma mark - 点击事件
